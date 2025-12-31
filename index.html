@@ -7,7 +7,7 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     :root{ 
-        --bg: #f0f9ff; /* 天空淡蓝背景 */
+        --bg: #f0f9ff; /* 天空淡蓝背景 (作为图片加载前的底色) */
         --card: #ffffff; 
         --accent: #38bdf8; /* 天空蓝强调色 */
         --accent-dark: #0284c7;
@@ -22,7 +22,15 @@
         margin: 0;
         font-family: "PingFang SC", "Microsoft YaHei", "Nunito", sans-serif;
         background-color: var(--bg);
-        background-image: radial-gradient(circle at 10% 20%, rgb(224, 242, 254) 0%, rgb(240, 249, 255) 90%);
+        
+        /* --- 修改处：设置线上背景图 --- */
+        background-image: url('https://getwallpapers.com/wallpaper/full/8/3/a/1115493-kids-desktop-background-1920x1080-windows-xp.jpg');
+        background-size: cover;       /* 确保铺满屏幕 */
+        background-position: center;  /* 图片居中 */
+        background-attachment: fixed; /* 滚动时背景固定 */
+        background-repeat: no-repeat;
+        /* --------------------------- */
+
         color: var(--text-main);
         height: 100vh;
         overflow-x: hidden;
@@ -40,10 +48,10 @@
     .card {
         width: 100%;
         max-width: 680px;
-        background: var(--card);
+        background: var(--card); /* 保持白色背景以保证文字清晰 */
         border-radius: 30px;
         padding: 40px 30px;
-        box-shadow: var(--shadow-soft), var(--shadow-card);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.1), var(--shadow-card);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -286,10 +294,10 @@
   </style>
 
   <script>
-    // Web App URL (GAS)
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbxmYyVnw2QR0eH-IlwkPmu2zhFlz8zy39fZy721l7Hw0jsDFVdDrLg2XU4GGwAkQpIz/exec";
+    // Web App URL (GAS) - 修改处：已更新为新的URL
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbylfQlS5nIrYAyRmFPUZeFwYNVjhBVcID06uotBtMYP33lL1pB2bJXgndJNHFs6RND5/exec";
     
-    // ⚠️ 课文内容：风筝，快乐地飞着！ (已替换)
+    // ⚠️ 课文内容：风筝，快乐地飞着！
     const sentences = [
       "又是起风时，各族的孩子都带着各自的风筝到草地上来放了。",
       "一个孩子拉着长线往前奔跑，另一个站着轻握风筝。前一个喊“放”，后一个就松开手。几次抽拉之下，风筝便飞向空中，和其他风筝在一起游玩了。",
@@ -439,4 +447,5 @@
     };
   </script>
 </body>
+
 </html>
